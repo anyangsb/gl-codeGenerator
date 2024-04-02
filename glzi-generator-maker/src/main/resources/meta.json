@@ -6,8 +6,10 @@
   "author": "gl",
   "createTime": "2024-2-22",
   "fileConfig": {
-    "inputRootPath": "D:/SpringBoot2/CodeGenerator/glzi-generator/glzi-generator-basic/acm-template",
-    "outputRootPath": "generated",
+
+    "inputRootPath": ".source/acm-template-pro",
+    "outputRootPath": "D:/SpringBoot2/CodeGenerator/glzi-generator/acm-template-pro",
+    "sourceRootPath": "D:/SpringBoot2/CodeGenerator/glzi-generator/glzi-generator-demo-projects/acm-template-pro",
     "type": "dir",
     "files": [
           {
@@ -24,8 +26,8 @@
           },
 
       {
-        "inputPath": "src/com/yupi/acm/MainTemplate.java.ftl",
-        "outputPath": "src/com/yupi/acm/MainTemplate.java",
+        "inputPath": "src/com/gl/acm/MainTemplate.java.ftl",
+        "outputPath": "src/com/gl/acm/MainTemplate.java",
         "type": "file",
         "generateType": "dynamic"
       }
@@ -33,12 +35,6 @@
   },
   "modelConfig": {
     "models": [
-      {
-        "fieldName": "needGit",
-        "type": "boolean",
-        "description": "是否生成 .gitignore 文件",
-        "defaultValue": true
-      },
       {
         "fieldName": "loop",
         "type": "boolean",
@@ -50,7 +46,7 @@
         "fieldName": "author",
         "type": "String",
         "description": "作者注释",
-        "defaultValue": "yupi",
+        "defaultValue": "gl",
         "abbr": "a"
       },
 
