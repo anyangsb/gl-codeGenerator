@@ -4,17 +4,17 @@ import lombok.Data;
 
 @Data
 public class DataModel {
+
+    /**
+     * 是否生成.gitignore文件
+     */
+    public boolean needGit;
     /**
      * 是否生成循环
      */
-    private boolean loop;
+    public boolean loop;
     /**
-     * 作者注释
+     * 核心模板
      */
-    private String author = "gl";
-
-    /**
-     * 输出信息
-     */
-    private String outputText = "sum = ";
+    public MyTemplate myTemplate;
 }

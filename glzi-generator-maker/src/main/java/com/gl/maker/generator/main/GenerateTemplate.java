@@ -8,14 +8,16 @@ import com.gl.maker.generator.ScriptGenerator;
 import com.gl.maker.generator.file.DynamicFileGenerator;
 import com.gl.maker.meta.Meta;
 import com.gl.maker.meta.MetaManager;
+import com.gl.maker.model.DataModel;
 import freemarker.template.TemplateException;
 
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
 
 public abstract class GenerateTemplate {
     
-    public void doGenerate() throws IOException, TemplateException, InterruptedException {
+    public void doGenerate(DataModel dataModel) throws IOException, TemplateException, InterruptedException {
         Meta meta = MetaManager.getMetaObject();
 
         //0.输出根目录

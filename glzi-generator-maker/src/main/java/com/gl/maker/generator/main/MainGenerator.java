@@ -13,6 +13,7 @@ import freemarker.template.TemplateException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class MainGenerator extends GenerateTemplate{
 
@@ -20,4 +21,5 @@ public class MainGenerator extends GenerateTemplate{
     protected void buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
         System.out.println("不需要输出精简版了");
     }
+
 }

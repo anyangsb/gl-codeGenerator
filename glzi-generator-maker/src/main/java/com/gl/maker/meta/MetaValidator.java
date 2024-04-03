@@ -11,6 +11,7 @@ import com.gl.maker.meta.enums.ModelTypeEnum;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MetaValidator {
     public static void doValidAndFill(Meta meta) {
@@ -30,6 +31,19 @@ public class MetaValidator {
             return;
         }
         for (Meta.ModelConfig.ModelInfo modelInfo : modelInfoList) {
+
+            //为group则不需要校验
+            String groupKey = modelInfo.getGroupKey();
+            if(StrUtil.isNotEmpty(groupKey)){
+                //生成中间参数
+                List<Meta.ModelConfig.ModelInfo> subModelInfoList = modelInfo.getModels();
+                String allArgsStr = modelInfo.getModels().stream()
+                        .map(subModelInfo->String.format("\"--%s\"",subModelInfo.getFieldName()))
+                        .collect(Collectors.joining(", "));
+                modelInfo.setAllArgsStr(allArgsStr);
+                continue;
+            }
+
             //输出路径默认值
             String fieldName = modelInfo.getFieldName();
             if (StrUtil.isBlank(fieldName)) {
@@ -80,6 +94,10 @@ public class MetaValidator {
         }
         for (Meta.FileConfig.FileInfo fileInfo : fileInfoList) {
             String type = fileInfo.getType();
+
+            if(FileTypeEnum.GROUP.getValue().equals(type)){
+                continue;
+            }
 
             // inputPath: 必填
             String inputPath = fileInfo.getInputPath();
