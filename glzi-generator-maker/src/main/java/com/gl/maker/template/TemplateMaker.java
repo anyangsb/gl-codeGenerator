@@ -29,7 +29,7 @@ public class TemplateMaker {
         meta.setDescription("ACM 示例模板生成器");
         //指定原始项目路径
         String projectPath = System.getProperty("user.dir");
-        String originProjectPath = new File(projectPath).getParent() + File.separator + "glzi-generator-demo-projects/springboot-init";
+        String originProjectPath = new File(projectPath).getParent() + File.separator + "glzi-generator-demo-projects/glzi-generator-web-backend";
         String inputFilePath1 = "src/main/java/com/gl/springbootinit/common";
         String inputFilePath2 = "src/main/resources/application.yml";
         List<String> inputFilePathList = Arrays.asList(inputFilePath1,inputFilePath2);

@@ -3,6 +3,7 @@ package com.gl.maker.generator.main;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.ZipUtil;
 import com.gl.maker.generator.JarGenerator;
 import com.gl.maker.generator.ScriptGenerator;
 import com.gl.maker.generator.file.DynamicFileGenerator;
@@ -16,13 +17,18 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class GenerateTemplate {
-    
-    public void doGenerate(DataModel dataModel) throws IOException, TemplateException, InterruptedException {
+
+
+    public void doGenerate() throws TemplateException, IOException, InterruptedException {
         Meta meta = MetaManager.getMetaObject();
+        String projectPath = System.getProperty("user.dir");
+        String outputPath = projectPath + File.separator + "generated" + File.separator + meta.getName();
+        doGenerate(meta, outputPath);
+    }
+
+    public void doGenerate(Meta meta,String outputPath) throws IOException, TemplateException, InterruptedException {
 
         //0.输出根目录
-        String projectPath = System.getProperty("user.dir");
-        String outputPath = projectPath + File.separator +"generated" +File.separator + meta.getName();
         if(!FileUtil.exist(outputPath)){
             FileUtil.mkdir(outputPath);
         }
@@ -48,7 +54,7 @@ public abstract class GenerateTemplate {
      * @param jarPath
      * @param shellOutputFilePath
      */
-    protected void buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
+    protected String buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
         String distOutputPath = outputPath + "-dist";
         //- 拷贝jar包
         String targetAbsolutePath = distOutputPath + File.separator+ "target";
@@ -60,6 +66,7 @@ public abstract class GenerateTemplate {
         FileUtil.copy(shellOutputFilePath +".bat",distOutputPath,true);
         //拷贝源模板文件
         FileUtil.copy(sourceCopyDestPath,distOutputPath,true);
+        return distOutputPath;
     }
 
     /**
@@ -123,6 +130,10 @@ public abstract class GenerateTemplate {
         outputFilePath = outputBaseJavaPackagePath + "/cli/command/ListCommand.java";
         DynamicFileGenerator.doGenerate(inputFilePath,outputFilePath, meta);
 
+        inputFilePath = inputResourcePath + File.separator + "templates/java/cli/command/JsonGenerateCommand.java.ftl";
+        outputFilePath = outputBaseJavaPackagePath + "/cli/command/JsonGenerateCommand.java";
+        DynamicFileGenerator.doGenerate(inputFilePath,outputFilePath, meta);
+
         inputFilePath = inputResourcePath + File.separator + "templates/java/cli/CommandExecutor.java.ftl";
         outputFilePath = outputBaseJavaPackagePath + "/cli/CommandExecutor.java";
         DynamicFileGenerator.doGenerate(inputFilePath,outputFilePath, meta);
@@ -167,4 +178,9 @@ public abstract class GenerateTemplate {
         return sourceCopyDestPath;
     }
 
+    protected String buildZip(String outputPath){
+        String zipPath = outputPath+ ".zip";
+        ZipUtil.zip(outputPath , zipPath);
+        return zipPath;
+    }
 }

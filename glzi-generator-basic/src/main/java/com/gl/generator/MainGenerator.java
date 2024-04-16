@@ -17,7 +17,7 @@ public class MainGenerator {
         String inputPath;
         String outputPath;
 
-        inputPath = new File(inputRootPath,"src/com/yupi/acm/")
+
     }
 
 }

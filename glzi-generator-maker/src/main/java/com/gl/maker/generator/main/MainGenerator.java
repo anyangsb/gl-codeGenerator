@@ -18,8 +18,9 @@ import java.util.HashMap;
 public class MainGenerator extends GenerateTemplate{
 
     @Override
-    protected void buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
+    protected String buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
         System.out.println("不需要输出精简版了");
+        return "1";
     }
 
 }

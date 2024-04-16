@@ -1,8 +1,8 @@
 {
   "id": 1,
   "meta": {
-    "name": "springboot-init-generator",
+    "name": "glzi-generator-web-backend-generator",
     "description": "Spring Boot 模板项目生成器"
   },
-  "originProjectPath": "../../../glzi-generator-demo-projects/springboot-init"
+  "originProjectPath": "../../../glzi-generator-demo-projects/glzi-generator-web-backend"
 }

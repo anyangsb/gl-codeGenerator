@@ -307,7 +307,7 @@
                         "fieldName": "description",
                         "type": "String",
                         "description": "接口文档描述",
-                        "defaultValue": "springboot-init"
+                        "defaultValue": "glzi-generator-web-backend"
                     },
                     {
                         "fieldName": "title",

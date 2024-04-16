@@ -28,8 +28,8 @@
         "fieldName": "description",
         "type": "String",
         "description": "接口文档描述",
-        "defaultValue": "springboot-init",
-        "replaceText": "springboot-init"
+        "defaultValue": "glzi-generator-web-backend",
+        "replaceText": "glzi-generator-web-backend"
       },
       {
         "fieldName": "version",

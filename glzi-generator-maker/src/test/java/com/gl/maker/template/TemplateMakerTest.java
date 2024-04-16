@@ -22,7 +22,7 @@ public class TemplateMakerTest {
 
     @Test
     public void makeSpringBootTemplate() {
-        String rootPath = "examples/springboot-init/";
+        String rootPath = "examples/glzi-generator-web-backend/";
         String configStr = ResourceUtil.readUtf8Str(rootPath + "templateMaker.json");
         TemplateMakerConfig templateMakerConfig = JSONUtil.toBean(configStr, TemplateMakerConfig.class);
         long id = makeTemplate(templateMakerConfig);
