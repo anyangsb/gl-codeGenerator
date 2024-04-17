@@ -105,8 +105,7 @@ public abstract class GenerateTemplate {
      * @throws TemplateException
      */
     protected void generateCode(Meta meta, String outputPath) throws IOException, TemplateException {
-        ClassPathResource classPathResource = new ClassPathResource("");
-        String inputResourcePath = classPathResource.getAbsolutePath();
+        String inputResourcePath = "";
 
         String inputFilePath;
         String outputFilePath;
